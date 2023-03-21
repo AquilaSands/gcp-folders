@@ -1,5 +1,5 @@
-variable "org_id" {
-  description = "The organization ID under which the folders will be created."
+variable "parent_id" {
+  description = "The folder id in the format 'folder/1234' or the organization id in the format 'organization/1234' under which the top level folder will be created."
   type        = string
 }
 

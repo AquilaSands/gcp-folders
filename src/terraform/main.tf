@@ -11,7 +11,7 @@ locals {
 
 resource "google_folder" "top_level" {
   display_name = var.top_level_folder_name
-  parent       = "organizations/${var.org_id}"
+  parent       = var.parent_id
 }
 
 resource "google_folder" "environment" {
