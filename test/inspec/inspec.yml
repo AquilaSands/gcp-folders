@@ -1,0 +1,27 @@
+name: GCP Folders
+summary: An InSpec profile to test the correct deployment of a folder structure in GCP
+version: 0.1.0
+inspec_version: '>= 4'
+inputs:
+- name: parent_id
+  type: String
+  required: true
+  description: 'The identifier of the parent for the top level folder.
+    Must be either a folder id in the format "folder/1234" or the organization id in the format "organization/1234"'
+- name: top_level_folder_name
+  type: String
+  required: true
+  description: 'The name of the top level folder.'
+- name: environment_folder_names
+  type: Array
+  required: true
+  description: 'An array containing the names of the environment folders'
+- name: team_folder_names
+  type: Array
+  required: true
+  description: 'An array containing the names of the team folders'
+depends:
+- name: inspec-gcp
+  url: https://github.com/inspec/inspec-gcp/archive/main.tar.gz
+supports:
+- platform: gcp
