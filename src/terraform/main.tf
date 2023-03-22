@@ -21,9 +21,8 @@ resource "google_folder" "environment" {
 }
 
 resource "google_folder" "team" {
-  # local.network_subnets is a list, so we must now project it into a map
-  # where each key is unique. We'll combine the network and subnet keys to
-  # produce a single unique key per instance.
+  # local.team_folders is a list, so we must now project it into a map
+  # where each key is unique.
   for_each = {
     for i, folder in local.team_folders : "${i}" => folder
   }
