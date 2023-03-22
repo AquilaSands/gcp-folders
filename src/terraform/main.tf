@@ -3,6 +3,7 @@ locals {
     for name in var.team_folder_names : [
       for env in google_folder.environment : {
         env_folder  = env.name
+        env_display_name = env.display_name
         team_folder = name
       }
     ]
@@ -24,7 +25,7 @@ resource "google_folder" "team" {
   # local.team_folders is a list, so we must now project it into a map
   # where each key is unique.
   for_each = {
-    for i, folder in local.team_folders : "${i}" => folder
+    for folder in local.team_folders : "${folder.env_display_name}/${folder.team_folder}" => folder
   }
 
   display_name = each.value.team_folder
