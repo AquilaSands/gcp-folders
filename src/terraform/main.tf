@@ -2,9 +2,9 @@ locals {
   team_folders = flatten([
     for name in var.team_folder_names : [
       for env in google_folder.environment : {
-        env_folder  = env.name
+        env_folder       = env.name
         env_display_name = env.display_name
-        team_folder = name
+        team_folder      = name
       }
     ]
   ])
@@ -16,7 +16,8 @@ resource "google_folder" "top_level" {
 }
 
 resource "google_folder" "environment" {
-  for_each     = var.environment_folder_names
+  for_each = var.environment_folder_names
+
   display_name = each.value
   parent       = google_folder.top_level.name
 }
