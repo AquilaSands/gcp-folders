@@ -8,6 +8,11 @@ output "top_level_folder" {
   value       = google_folder.top_level.name
 }
 
+output "top_level_folder_name" {
+  description = "The resource name of the Folder. Its format is folders/{folder_id}."
+  value       = google_folder.top_level.display_name
+}
+
 output "environment_folders" {
   description = "A list of the environment folders resource names and display names. Its format is [{name: folders/{folder_id}, display_name: 'Display Name'}, ...]"
   value = [for folder in google_folder.environment : {
